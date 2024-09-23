@@ -1,7 +1,7 @@
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 const aws = {
-   uploadFileToS3: async (fileName, file, imageFolder) => {
+   uploadFileToS3: async (fileName, file, fileFolder) => {
       const awsS3Client = new S3Client({
          region: process.env.AWS_S3_REGION_NAME,
          credentials: {
@@ -15,7 +15,7 @@ const aws = {
 
       const params = {
          Bucket: process.env.AWS_S3_BUCKET_NAME,
-         Key: `${imageFolder}/${fileName}`, // Include folder in the key if needed
+         Key: `${fileFolder}/${fileName}`, // Include folder in the key if needed
          Body: buffer, // Use the buffer instead of the File object
          ACL: 'public-read',
          ContentType: file.type,
