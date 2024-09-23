@@ -4,7 +4,18 @@ import { notFound } from "next/navigation";
 import environment from '@/environment';
 import { getMealDetail } from "../actions";
 
+export async function generateMetadata({ params }) {
+    const meal = await getMealDetail(params.slug);
 
+    if (!meal) {
+        notFound();
+    }
+
+    return {
+        title: meal.title,
+        description: meal.summary
+    };
+}
 
 export default async function MealDetailsPage({ params }) {
     const meal = await getMealDetail(params.slug);

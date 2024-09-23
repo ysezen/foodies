@@ -11,6 +11,7 @@ export default function MealItem({ title, image, summary, creator, slug, id, gui
                     <Image
                         src={environment.getImagePath(image)}
                         alt={title}
+                        placeholder='empty' // | "empty" | "blur" | "data:image/..."
                         fill />
                 </div>
                 <div className={classes.headerText}>

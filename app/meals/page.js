@@ -5,6 +5,11 @@ import { listMeals } from "@/app/meals/actions";
 import { Suspense } from "react";
 import LoadingPage from "@/app/loading-page";
 
+export const metadata = {
+    title: 'Delicious Meals',
+    description: 'Browse the delicious meals shared by our community of food lovers.',
+}
+
 async function Meals() {
     const meals = await listMeals();
     return <MealsGrid meals={meals} />;
